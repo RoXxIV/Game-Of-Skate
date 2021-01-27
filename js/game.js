@@ -17,7 +17,9 @@ let listLvl = document.querySelectorAll("#lvl-choice li");
 
 //Gestion du score
 let score = 0;//actual score
+let bestScore = 0;//Personnal best
 let showScore = document.querySelector('#score');
+let showBestScore = document.querySelector('#bestScore');
 let fail = 0;//correspond au nombre de lettre "S.K.A.T.E" affiché
 
 //Gestion des tricks
@@ -74,12 +76,28 @@ function winOnClick() {
 }
 //Si trick raté
 function loseOnclick() {
-    /*
-        va incrémenté la variable fail 
-        puis ajouté une lettre à "SKATE"
-    */
+    //update le tableau et l'affichage de skate[] en fonction du nombre de fail
+    fail++
+    switch (fail) {
+        case 1:
+            skate[1] = 'S';
+            break;
+        case 2:
+            skate[2] = 'K';
+            break;
+        case 3:
+            skate[3] = 'A';
+            break;
+        case 4:
+            skate[4] = 'T';
+            break;
+        case 5:
+            skate[5] = 'E';
+            showTrick.innerHTML = 'Game over, score :' + score;
+            break;
+    }
+    showSkate.innerHTML = skate
 }
-
 /*
     *_*_*_*_*_*_*_*_*_*_*EVENTS*_*_*_*_*_*_*_*_*_*_*
 */
@@ -93,4 +111,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     //boutton trick reussi
     win.addEventListener("click", winOnClick);
+    lose.addEventListener("click", loseOnclick);
 });
