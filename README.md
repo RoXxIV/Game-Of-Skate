@@ -4,7 +4,7 @@ Solo game of skate ( javascript )
 
 ## 1.Difficulté
 
-    Le joueur peut choisir en 3 niveaux de difficulté
+    Le joueur peut choisir entre 3 niveaux de difficulté
     - Novice __Tableau `noobTricks` 1pt
     - Intermediate __Tableau `noobTricks + interTricks` 2pt
     - Expert __Tableau `noobTricks + interTricks + proTricks` 3pt
