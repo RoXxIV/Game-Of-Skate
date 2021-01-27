@@ -17,10 +17,11 @@ Solo game of skate
 
 ## 2.Deroulement
 
-[x]Une tricks est généré aléatoirement puis affiché.
-[x]Si je joueur reussi la tricks et click sur `win`, son score est incrémenté en fonction du niveau de difficulté choisis et une nouvelle tricks est affiché
-[x]Si le joueur rate sa tricks et click sur `lose`, une lettre est ajoutée
-[x]La partie s'arrete quand toute les lettres du mot SKATE sont affiché
-[x]Une fois la partie terminée, le score est comparé avec le meilleur score enregister et celui-ci est mis à jour si nécessaire.
-[ ]le meilleur score est enregistrer dans le storage
-[x]Reset de la partie
+    La partie est lancé
+    [x]-Une tricks est généré aléatoirement puis affiché.
+    [x]-Si je joueur reussi la tricks et click sur `win`, son score est incrémenté en fonction du niveau de difficulté choisis et une nouvelle tricks est affiché
+    [x]-Si le joueur rate sa tricks et click sur `lose`, une lettre est ajoutée
+    [x]-La partie s'arrete quand toute les lettres du mot SKATE sont affiché
+    [x]-Une fois la partie terminée, le score est comparé avec le meilleur score enregister et celui-ci est mis à jour si nécessaire.
+    [ ]-le meilleur score est enregistrer dans le storage
+    [x]-Reset de la partie
