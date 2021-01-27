@@ -23,8 +23,10 @@ let bestScore = 0;//Personnal best
 let showScore = document.querySelector('#score');
 let showBestScore = document.querySelector('#bestScore');
 let fail = 0;//correspond au nombre de lettre "S.K.A.T.E" affiché
+let addPoint;//incremente score en fonction du niveau de difficulté
 
 //Gestion des tricks
+//selection des boutton
 let win = document.querySelector("#win");
 let lose = document.querySelector('#lose');
 let showTrick = document.querySelector('#trick');//affiche la tricks ici
@@ -45,16 +47,19 @@ function onClickChooseLvl() {
     if (!gameStarted) {
         //recupere le niveau choisis
         let difficulty = this.textContent.trim();
-        //configure trickList en fonction du niveau choisi
+        //configure trickList et addPoint en fonction du niveau choisi
         switch (difficulty) {
             case 'Novice':
                 trickList = noobTricks;
+                addPoint = 1;
                 break;
             case 'Intermediate':
                 trickList = noobTricks.concat(interTricks);
+                addPoint = 2;
                 break;
             case 'Expert':
                 trickList = noobTricks.concat(interTricks, proTricks);
+                addPoint = 3;
                 break;
         }
         //initialise le jeu
@@ -66,14 +71,13 @@ function onClickChooseLvl() {
 function giveMeaTrick(arr) {
     let index = getRandomInteger(0, arr.length - 1);
     showTrick.innerHTML = trickList[index];
-
 }
 
 //Si trick reussi
 function winOnClick() {
     if (gameStarted) {
         //incremente et update score
-        score++;
+        score += addPoint;
         showScore.innerHTML = score;
         //genere une nouvelle trick
         giveMeaTrick(trickList);
@@ -101,7 +105,6 @@ function loseOnclick() {
                 skate[5] = 'E';
                 showTrick.innerHTML = 'Game over, score :' + score;
                 gameStarted = false;
-                skate = ['[', '_', '_', '_', '_', '_', ']']
                 gameInit();
                 break;
         }
@@ -113,6 +116,8 @@ function gameInit() {
         bestScore = score;
         showBestScore.innerHTML = bestScore;
     }
+    skate = ['[', '_', '_', '_', '_', '_', ']']
+    showSkate.innerHTML = skate
     score = 0;
     fail = 0;
     showScore.innerHTML = score;
