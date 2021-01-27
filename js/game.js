@@ -1,6 +1,8 @@
 /*
     *_*_*_*_*_*_*_*_*_*_*VARIABLES*_*_*_*_*_*_*_*_*_*_*
 */
+//gameStatus
+let gameStarted = false
 //Affichera les lettres skate + DOM
 let skate = ['[', '_', '_', '_', '_', '_', ']'];
 let showSkate = document.querySelector('#skate');
@@ -32,8 +34,7 @@ let showTrick = document.querySelector('#trick');//affiche la tricks ici
 */
 // commence le jeu une fois le niveau de difficulté choisi
 function startGame() {
-    // cache les boutton "choix de difficulté"
-    fadeOut(blockLvlButton);
+    gameStarted = true;
     //console.log('start game', trickList)
     //affiche une premiere trick
     giveMeaTrick(trickList);
@@ -41,22 +42,24 @@ function startGame() {
 
 //choix de la difficulté,configure trickList , puis commence le jeu
 function onClickChooseLvl() {
-    //recupere le niveau choisis
-    let difficulty = this.textContent.trim();
-    //configure trickList en fonction du niveau choisi
-    switch (difficulty) {
-        case 'Novice':
-            trickList = noobTricks;
-            break;
-        case 'Intermediate':
-            trickList = noobTricks.concat(interTricks);
-            break;
-        case 'Expert':
-            trickList = noobTricks.concat(interTricks, proTricks);
-            break;
+    if (!gameStarted) {
+        //recupere le niveau choisis
+        let difficulty = this.textContent.trim();
+        //configure trickList en fonction du niveau choisi
+        switch (difficulty) {
+            case 'Novice':
+                trickList = noobTricks;
+                break;
+            case 'Intermediate':
+                trickList = noobTricks.concat(interTricks);
+                break;
+            case 'Expert':
+                trickList = noobTricks.concat(interTricks, proTricks);
+                break;
+        }
+        //initialise le jeu
+        startGame();
     }
-    //initialise le jeu
-    startGame();
 }
 
 //Genere une trick aleatoirement
@@ -68,35 +71,51 @@ function giveMeaTrick(arr) {
 
 //Si trick reussi
 function winOnClick() {
-    //incremente et update score
-    score++;
-    showScore.innerHTML = score;
-    //genere une nouvelle trick
-    giveMeaTrick(trickList);
+    if (gameStarted) {
+        //incremente et update score
+        score++;
+        showScore.innerHTML = score;
+        //genere une nouvelle trick
+        giveMeaTrick(trickList);
+    }
 }
 //Si trick raté
 function loseOnclick() {
-    //update le tableau et l'affichage de skate[] en fonction du nombre de fail
-    fail++
-    switch (fail) {
-        case 1:
-            skate[1] = 'S';
-            break;
-        case 2:
-            skate[2] = 'K';
-            break;
-        case 3:
-            skate[3] = 'A';
-            break;
-        case 4:
-            skate[4] = 'T';
-            break;
-        case 5:
-            skate[5] = 'E';
-            showTrick.innerHTML = 'Game over, score :' + score;
-            break;
+    if (gameStarted) {
+        //update le tableau et l'affichage de skate[] en fonction du nombre de fail
+        fail++
+        switch (fail) {
+            case 1:
+                skate[1] = 'S';
+                break;
+            case 2:
+                skate[2] = 'K';
+                break;
+            case 3:
+                skate[3] = 'A';
+                break;
+            case 4:
+                skate[4] = 'T';
+                break;
+            case 5:
+                skate[5] = 'E';
+                showTrick.innerHTML = 'Game over, score :' + score;
+                gameStarted = false;
+                skate = ['[', '_', '_', '_', '_', '_', ']']
+                gameInit();
+                break;
+        }
+        showSkate.innerHTML = skate
     }
-    showSkate.innerHTML = skate
+}
+function gameInit() {
+    if (score > bestScore) {
+        bestScore = score;
+        showBestScore.innerHTML = bestScore;
+    }
+    score = 0;
+    fail = 0;
+    showScore.innerHTML = score;
 }
 /*
     *_*_*_*_*_*_*_*_*_*_*EVENTS*_*_*_*_*_*_*_*_*_*_*
@@ -112,4 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
     //boutton trick reussi
     win.addEventListener("click", winOnClick);
     lose.addEventListener("click", loseOnclick);
+
 });
+
