@@ -18,7 +18,7 @@ const proTricks = ['Bigspin Heelflip', 'Bigspin Flip', 'Biggerflip', 'Impossible
     'Forward Flip', 'Hardflip', 'Inward Heelflip', 'Laser Flip', 'Pressure Flip'];
 
 /*
-Expert
+switch
 */
 const switchTricks = ['Switch Heelflip', 'Switch Flip', 'Switch Impossible',
     'Switch Hardflip'];
