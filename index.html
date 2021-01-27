@@ -4,36 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>My GAME of S.K.A.T.E</title>
   </head>
   <body>
-    <ul id="lvl-choice">
-      <li>
-        <button id="novice">Novice</button>
-      </li>
-      <li>
-        <button id="novice">Intermediate</button>
-      </li>
-      <li>
-        <button>Expert</button>
-      </li>
-    </ul>
-    <div id="app">
-      <ul>
-        <li>Personal best : <span id="bestScore">0</span></li>
-        <li>Actual score : <span id="score">0</span></li>
-        <li>Switch</li>
+    <main>
+      <ul id="lvl-choice">
+        <li>
+          <button id="novice">Novice</button>
+        </li>
+        <li>
+          <button id="novice">Intermediate</button>
+        </li>
+        <li>
+          <button>Expert</button>
+        </li>
       </ul>
-      <div>
-        <h4 id="trick"></h4>
+      <div id="app">
         <ul>
-          <li><button id="win">Win</button></li>
-          <li><button id="lose">Lose</button></li>
+          <li>Personal best : <span id="bestScore">0</span></li>
+          <li>Actual score : <span id="score">0</span></li>
+          <li>Switch</li>
         </ul>
-        <h3 id="skate">[ _ _ _ _ _ ]</h3>
+        <div>
+          <h4 id="trick"></h4>
+          <ul>
+            <li><button id="win">Win</button></li>
+            <li><button id="lose">Lose</button></li>
+          </ul>
+          <h3 id="skate">[ _ _ _ _ _ ]</h3>
+        </div>
       </div>
-    </div>
+    </main>
     <script src="js/base.js"></script>
     <script src="js/tricks.js"></script>
     <script src="js/game.js"></script>
