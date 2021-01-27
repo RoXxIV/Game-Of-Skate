@@ -37,6 +37,11 @@ let showTrick = document.querySelector('#trick');//affiche la tricks ici
 // commence le jeu une fois le niveau de difficulté choisi
 function startGame() {
     gameStarted = true;
+    showSkate.innerHTML = "";
+    skate = ['[', '_', '_', '_', '_', '_', ']']
+    for (let i = 0; i < skate.length; i++) {
+        showSkate.innerHTML += skate[i];
+    }
     //console.log('start game', trickList)
     //affiche une premiere trick
     giveMeaTrick(trickList);
@@ -101,23 +106,25 @@ function loseOnclick() {
             case 4:
                 skate[4] = 'T';
                 break;
-            case 5:
+            case 5://game over
                 skate[5] = 'E';
                 showTrick.innerHTML = 'Game over, score :' + score;
                 gameStarted = false;
                 gameInit();
                 break;
         }
-        showSkate.innerHTML = skate
+        showSkate.innerHTML = "";
+        for (let i = 0; i < skate.length; i++) {
+            showSkate.innerHTML += skate[i];
+        }
     }
 }
 function gameInit() {
+    // personnal best est battu on l'update
     if (score > bestScore) {
         bestScore = score;
         showBestScore.innerHTML = bestScore;
     }
-    skate = ['[', '_', '_', '_', '_', '_', ']']
-    showSkate.innerHTML = skate
     score = 0;
     fail = 0;
     showScore.innerHTML = score;
@@ -127,8 +134,7 @@ function gameInit() {
 */
 //s'execute une fois le DOM chargé
 document.addEventListener("DOMContentLoaded", function () {
-    //init et affiche les lettre skate, "[ _ _ _ _ _ ]"
-    showSkate.innerHTML = skate;
+
     //event boutton "choix de la difficulté"
     for (let lvl of listLvl) {
         lvl.addEventListener("click", onClickChooseLvl);
