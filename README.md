@@ -11,4 +11,4 @@ Solo game of skate ( javascript )
     Le joueur peut activer le Switch
     - 1 chance sur 3 __ +1pt
     - ajoute une une partie ou tout le Tableau `switchTrick` en
-      finction du niveau choisis
+      fonction du niveau choisis
