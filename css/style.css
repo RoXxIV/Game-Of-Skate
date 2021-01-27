@@ -1,0 +1,37 @@
+main {
+  width: 30%;
+  margin: 100px auto 0px auto;
+}
+#lvl-choice span,
+#winLose span {
+  cursor: pointer;
+  padding: 5px 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+#lvl-choice {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+#scoring {
+  display: flex;
+  justify-content: space-around;
+}
+#app {
+  text-align: center;
+  border: 2px solid black;
+  padding: 50px;
+}
+#winLose {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0px;
+}
+#winLose span {
+  margin: 0px 20px;
+}
+#app h3 {
+  font-size: 32px;
+  letter-spacing: 20px;
+}
