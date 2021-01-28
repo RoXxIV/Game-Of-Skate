@@ -1,37 +1,119 @@
+/*
+*_*_*_*_*_*_*Variables*_*_*_*_*_*_*
+*/
+.btn-dark {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.btn-dark:hover {
+  color: #fff;
+  background-color: #23272b;
+  border-color: #1d2124;
+}
+/*
+*_*_*_*_*_*_*HEADER*_*_*_*_*_*_*
+*/
+header {
+  margin-bottom: 20px;
+  padding: 5px;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+  background-color: #343a40;
+}
+/*
+*_*_*_*_*_*_*MAIN*_*_*_*_*_*_*
+*/
 main {
-  width: 30%;
-  margin: 100px auto 0px auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(8, 75px);
 }
-#lvl-choice span,
-#winLose span {
-  cursor: pointer;
-  padding: 5px 15px;
-  border: 1px solid black;
-  border-radius: 5px;
+/*
+*_*_*_*_*_*_*Game-Option*_*_*_*_*_*_*
+*/
+#gameMode {
+  grid-column-start: 4;
+  grid-column-end: 10;
 }
-#lvl-choice {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 50px;
-}
-#scoring {
+#gameMode ul {
   display: flex;
   justify-content: space-around;
 }
-#app {
+
+/* buttons style */
+#lvl-choice span,
+#winLose span,
+#gameStatus span {
+  display: inline-block;
+  width: 150px;
+  padding: 5px 15px;
+  border-radius: 5px;
+
   text-align: center;
-  border: 2px solid black;
-  padding: 50px;
+  cursor: pointer;
+}
+/*
+*_*_*_*_*_*_*APP*_*_*_*_*_*_*
+*/
+#app {
+  grid-column-start: 4;
+  grid-column-end: 10;
+  grid-row-start: 3;
+  grid-row-end: 8;
+  border: 2px solid #343a40;
+  padding: 10px 20px;
+  color: #343a40;
+}
+#scoring {
+  display: flex;
+  flex-direction: column;
+}
+#scoring li {
+  font-size: 18px;
 }
 #winLose {
   display: flex;
   justify-content: center;
-  margin: 50px 0px;
+  margin-top: 50px;
 }
-#winLose span {
-  margin: 0px 20px;
+#win {
+  margin-right: 10px;
+}
+#lose {
+  margin-left: 10px;
+}
+#app h4 {
+  margin: 30px 0px;
+  font-size: 24px;
+  text-align: center;
 }
 #app h3 {
+  margin-top: 50px;
   font-size: 32px;
   letter-spacing: 20px;
+  text-align: center;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #gameMode {
+    grid-column-start: 2;
+    grid-column-end: 12;
+  }
+  #app {
+    grid-column-start: 2;
+    grid-column-end: 12;
+  }
+}
+@media (min-width: 320px) and (max-width: 768px) {
+  #gameMode {
+    grid-column-start: 2;
+    grid-column-end: 12;
+  }
+  #app {
+    grid-column-start: 2;
+    grid-column-end: 12;
+  }
 }

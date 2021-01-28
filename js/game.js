@@ -17,6 +17,7 @@ let app = document.querySelector("#app");
 let blockLvlButton = document.querySelector("#lvl-choice");
 let listLvl = document.querySelectorAll("#lvl-choice li");
 
+
 //Gestion du score
 let score = 0;//actual score
 let bestScore = 0;//Personnal best
@@ -108,7 +109,7 @@ function loseOnclick() {
                 break;
             case 5://game over
                 skate[5] = 'E';
-                showTrick.innerHTML = 'Game over, score :' + score;
+                showTrick.innerHTML = 'Game over, score :' + score + '<br /> Choose Your Difficulty';
                 gameStarted = false;
                 gameInit();
                 break;
@@ -119,6 +120,7 @@ function loseOnclick() {
         }
     }
 }
+
 function gameInit() {
     // personnal best est battu on l'update
     if (score > bestScore) {
@@ -134,7 +136,6 @@ function gameInit() {
 */
 //s'execute une fois le DOM chargé
 document.addEventListener("DOMContentLoaded", function () {
-
     //event boutton "choix de la difficulté"
     for (let lvl of listLvl) {
         lvl.addEventListener("click", onClickChooseLvl);

@@ -8,29 +8,38 @@
     <title>My GAME of S.K.A.T.E</title>
   </head>
   <body>
+    <header>
+      <h1>Game Of Skate</h1>
+    </header>
     <main>
-      <ul id="lvl-choice">
-        <li>
-          <span>Novice</span>
-        </li>
-        <li>
-          <span>Intermediate</span>
-        </li>
-        <li>
-          <span>Expert</span>
-        </li>
-      </ul>
+      <div id="gameMode">
+        <ul id="lvl-choice">
+          <li>
+            <span class="btn-dark">Novice</span>
+          </li>
+          <li>
+            <span class="btn-dark">Intermediate</span>
+          </li>
+          <li>
+            <span class="btn-dark">Expert</span>
+          </li>
+        </ul>
+        <ul id="gameStatus">
+          <li><span class="btn-dark">Switch</span></li>
+          <li><span class="btn-dark">Restart</span></li>
+          <li><span class="btn-dark">Joker</span></li>
+        </ul>
+      </div>
       <div id="app">
         <ul id="scoring">
           <li>Personal best : <span id="bestScore">0</span></li>
           <li>Actual score : <span id="score">0</span></li>
-          <li>Switch</li>
         </ul>
         <div>
-          <h4 id="trick">Choose difficulty</h4>
+          <h4 id="trick">Choose Your Difficulty</h4>
           <ul id="winLose">
-            <li><span id="win">Win</span></li>
-            <li><span id="lose">Lose</span></li>
+            <li><span id="win" class="btn-dark">Win</span></li>
+            <li><span id="lose" class="btn-dark">Lose</span></li>
           </ul>
           <h3 id="skate"></h3>
         </div>
