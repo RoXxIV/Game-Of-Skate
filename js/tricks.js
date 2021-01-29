@@ -23,6 +23,9 @@ switch
 const switchTricks = ['Switch Heelflip', 'Switch Flip', 'Switch Impossible',
     'Switch Hardflip'];
 
-
+//choisis un nb random entre min et max
+function getRandomInteger(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 

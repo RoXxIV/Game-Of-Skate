@@ -1,6 +1,13 @@
 /*
-*_*_*_*_*_*_*Variables*_*_*_*_*_*_*
+*_*_*_*_*_*_*Font*_*_*_*_*_*_*
 */
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+/*
+*_*_*_*_*_*_*Global*_*_*_*_*_*_*
+*/
+body {
+  font-family: "Architects Daughter", cursive;
+}
 .btn-dark {
   color: #fff;
   background-color: #343a40;
@@ -21,7 +28,9 @@ header {
   text-align: center;
   font-size: 24px;
   color: white;
+  background-image: url(../img/fond.jpg);
   background-color: #343a40;
+  background-blend-mode: hue;
 }
 /*
 *_*_*_*_*_*_*MAIN*_*_*_*_*_*_*
@@ -51,7 +60,6 @@ main {
   width: 150px;
   padding: 5px 15px;
   border-radius: 5px;
-
   text-align: center;
   cursor: pointer;
 }

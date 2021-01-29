@@ -2,55 +2,63 @@
     *_*_*_*_*_*_*_*_*_*_*VARIABLES*_*_*_*_*_*_*_*_*_*_*
 */
 //gameStatus
-let gameStarted = false
+let hasStarted = false
 //Affichera les lettres skate + DOM
-let skate = ['[', '_', '_', '_', '_', '_', ']'];
-let showSkate = document.querySelector('#skate');
+let skateLettersArr = ['[', '_', '_', '_', '_', '_', ']'];
+let skateDom = document.querySelector('#skate');
 
 //Va stocker la liste de tricks disponible en fonction du niveau
 let trickList = [];
 
 //Main app Dom
-let app = document.querySelector("#app");
+let appDom = document.querySelector("#app");
 
 //Choix difficulté Dom
-let blockLvlButton = document.querySelector("#lvl-choice");
 let listLvl = document.querySelectorAll("#lvl-choice li");
-
 
 //Gestion du score
 let score = 0;//actual score
 let bestScore = 0;//Personnal best
-let showScore = document.querySelector('#score');
-let showBestScore = document.querySelector('#bestScore');
 let fail = 0;//correspond au nombre de lettre "S.K.A.T.E" affiché
 let addPoint;//incremente score en fonction du niveau de difficulté
+let scoreDom = document.querySelector('#score');
+let bestScoreDom = document.querySelector('#bestScore');
 
 //Gestion des tricks
 //selection des boutton
-let win = document.querySelector("#win");
-let lose = document.querySelector('#lose');
-let showTrick = document.querySelector('#trick');//affiche la tricks ici
+let winBtn = document.querySelector("#win");
+let loseBtn = document.querySelector('#lose');
+let tricksDom = document.querySelector('#trick');
 
 /*
     *_*_*_*_*_*_*_*_*_*_*FONCTIONS*_*_*_*_*_*_*_*_*_*_*
 */
 // commence le jeu une fois le niveau de difficulté choisi
 function startGame() {
-    gameStarted = true;
-    showSkate.innerHTML = "";
-    skate = ['[', '_', '_', '_', '_', '_', ']']
-    for (let i = 0; i < skate.length; i++) {
-        showSkate.innerHTML += skate[i];
+    hasStarted = true;
+    skateDom.innerHTML = "";
+    skateLettersArr = ['[', '_', '_', '_', '_', '_', ']']
+    for (const letter of skateLettersArr) {
+        skateDom.innerHTML += letter;
     }
-    //console.log('start game', trickList)
     //affiche une premiere trick
-    giveMeaTrick(trickList);
+    GenerateTrick(trickList);
+}
+
+function gameInit() {
+    //Si personnal best est battu on l'update
+    if (score > bestScore) {
+        bestScore = score;
+        bestScoreDom.innerHTML = bestScore;
+    }
+    score = 0;
+    fail = 0;
+    scoreDom.innerHTML = score;
 }
 
 //choix de la difficulté,configure trickList , puis commence le jeu
 function onClickChooseLvl() {
-    if (!gameStarted) {
+    if (!hasStarted) {
         //recupere le niveau choisis
         let difficulty = this.textContent.trim();
         //configure trickList et addPoint en fonction du niveau choisi
@@ -74,63 +82,53 @@ function onClickChooseLvl() {
 }
 
 //Genere une trick aleatoirement
-function giveMeaTrick(arr) {
+function GenerateTrick(arr) {
     let index = getRandomInteger(0, arr.length - 1);
-    showTrick.innerHTML = trickList[index];
+    tricksDom.innerHTML = trickList[index];
 }
 
 //Si trick reussi
 function winOnClick() {
-    if (gameStarted) {
+    if (hasStarted) {
         //incremente et update score
         score += addPoint;
-        showScore.innerHTML = score;
+        scoreDom.innerHTML = score;
         //genere une nouvelle trick
-        giveMeaTrick(trickList);
+        GenerateTrick(trickList);
     }
 }
 //Si trick raté
 function loseOnclick() {
-    if (gameStarted) {
+    if (hasStarted) {
         //update le tableau et l'affichage de skate[] en fonction du nombre de fail
-        fail++
+        fail++;
         switch (fail) {
             case 1:
-                skate[1] = 'S';
+                skateLettersArr[1] = 'S';
                 break;
             case 2:
-                skate[2] = 'K';
+                skateLettersArr[2] = 'K';
                 break;
             case 3:
-                skate[3] = 'A';
+                skateLettersArr[3] = 'A';
                 break;
             case 4:
-                skate[4] = 'T';
+                skateLettersArr[4] = 'T';
                 break;
             case 5://game over
-                skate[5] = 'E';
-                showTrick.innerHTML = 'Game over, score :' + score + '<br /> Choose Your Difficulty';
-                gameStarted = false;
+                skateLettersArr[5] = 'E';
+                tricksDom.innerHTML = 'Game over, score :' + score + '<br /> Choose Your Difficulty';
+                hasStarted = false;
                 gameInit();
                 break;
         }
-        showSkate.innerHTML = "";
-        for (let i = 0; i < skate.length; i++) {
-            showSkate.innerHTML += skate[i];
+        skateDom.innerHTML = "";
+        for (letter of skateLettersArr) {
+            skateDom.innerHTML += letter;
         }
     }
 }
 
-function gameInit() {
-    // personnal best est battu on l'update
-    if (score > bestScore) {
-        bestScore = score;
-        showBestScore.innerHTML = bestScore;
-    }
-    score = 0;
-    fail = 0;
-    showScore.innerHTML = score;
-}
 /*
     *_*_*_*_*_*_*_*_*_*_*EVENTS*_*_*_*_*_*_*_*_*_*_*
 */
@@ -141,8 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
         lvl.addEventListener("click", onClickChooseLvl);
     }
     //boutton trick reussi
-    win.addEventListener("click", winOnClick);
-    lose.addEventListener("click", loseOnclick);
+    winBtn.addEventListener("click", winOnClick);
+    loseBtn.addEventListener("click", loseOnclick);
 
 });
 
