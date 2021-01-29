@@ -30,6 +30,10 @@ let winBtn = document.querySelector("#win");
 let loseBtn = document.querySelector('#lose');
 let tricksDom = document.querySelector('#trick');
 
+//fonctionnalité supplementaires
+//Restart
+let restartBtn = document.querySelector('#restart');
+
 /*
     *_*_*_*_*_*_*_*_*_*_*FONCTIONS*_*_*_*_*_*_*_*_*_*_*
 */
@@ -51,6 +55,10 @@ function gameInit() {
         bestScore = score;
         bestScoreDom.innerHTML = bestScore;
     }
+    //affiche score actuel
+    tricksDom.innerHTML = 'Game over, score :' + score + '<br /> Choose Your Difficulty';
+    //arrete la partie + init variables
+    hasStarted = false;
     score = 0;
     fail = 0;
     scoreDom.innerHTML = score;
@@ -117,8 +125,6 @@ function loseOnclick() {
                 break;
             case 5://game over
                 skateLettersArr[5] = 'E';
-                tricksDom.innerHTML = 'Game over, score :' + score + '<br /> Choose Your Difficulty';
-                hasStarted = false;
                 gameInit();
                 break;
         }
@@ -141,6 +147,8 @@ document.addEventListener("DOMContentLoaded", function () {
     //boutton trick reussi
     winBtn.addEventListener("click", winOnClick);
     loseBtn.addEventListener("click", loseOnclick);
+    //restart
+    restartBtn.addEventListener("click", gameInit);
 
 });
 

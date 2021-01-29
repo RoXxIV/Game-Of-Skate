@@ -25,6 +25,6 @@ Solo game of skate
     [x]-Une fois la partie terminée, le score est comparé avec le meilleur score enregister et celui-ci est mis à jour si nécessaire.
     [ ]-le meilleur score est enregistrer dans le storage
     [x]-Reset de la partie
-    [ ] le joueur a la possibilité de d'interompre et de relancer la partie
+    [x] le joueur a la possibilité de d'interompre et de relancer la partie
     [ ] le joueur peux faire appel au joker afin d'avoir un essai supplementaire
         en cas de fail. (une seule fois pas partie)
