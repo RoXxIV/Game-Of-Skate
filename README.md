@@ -10,10 +10,10 @@ Solo game of skate
     [x]- Novice __Tableau `noobTricks` 1pt
     [x]- Intermediate __Tableau `noobTricks + interTricks` 2pt
     [x]- Expert __Tableau `noobTricks + interTricks + proTricks` 3pt
-    Le joueur peut activer le Switch
-    [ ]- 1 chance sur 3 __ +1pt
-    [ ]- ajoute une une partie ou tout le Tableau `switchTrick` en
-      fonction du niveau choisis
+    Le joueur peut activer ou desactiver le Switch
+    [x]- si activé : ajoute une une partie ou tout le Tableau `switchTricks` en
+      fonction du niveau choisis , double les point
+    [x]- si desactivé , on supprime toute les tricks en switch , divise les points par 2
 
 ## 2.Deroulement
 
@@ -28,14 +28,13 @@ Solo game of skate
     [x] le joueur a la possibilité de d'interompre et de relancer la partie
     [x] le joueur peux afficher ou masquer l'historique des tricks
 
-## 2.Design
+## 2.Rendu
 
     css
     [ ]Rendu final
     [ ]responsive
     [ ]opti grid
+    [ ]affichage des regle de jeu
+    [ ]gestion message indication/erreurs
 
-    
 ![skate-30-01-2021](https://user-images.githubusercontent.com/20929844/106342368-d606ee80-62a0-11eb-9a42-2aba62495464.JPG)
-
-
