@@ -35,4 +35,4 @@ Solo game of skate
     [ ]responsive
     [ ]opti grid
 
-    ![rendu actuel](https://zupimages.net/up/21/04/79vw.jpg)
+    ![rendu actuel](img/skate-30-01-2021)
