@@ -35,4 +35,4 @@ Solo game of skate
     [ ]responsive
     [ ]opti grid
 
-    ![rendu actuel](img/skate-30-01-2021)
+    ![skate-30-01-2021](https://user-images.githubusercontent.com/20929844/106342173-2cbff880-62a0-11eb-989c-83ae4687d7bc.JPG)
