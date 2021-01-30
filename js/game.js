@@ -30,6 +30,13 @@ let winBtn = document.querySelector("#win");
 let loseBtn = document.querySelector('#lose');
 let tricksDom = document.querySelector('#trick');
 
+//fonctionnalité supplementaires
+//Restart
+let restartBtn = document.querySelector('#restart');
+
+//history
+let historyBtn = document.querySelector('#historyBtn');
+let historyDom = document.querySelector('#history-list');
 /*
     *_*_*_*_*_*_*_*_*_*_*FONCTIONS*_*_*_*_*_*_*_*_*_*_*
 */
@@ -41,6 +48,8 @@ function startGame() {
     for (const letter of skateLettersArr) {
         skateDom.innerHTML += letter;
     }
+    //vide l'historique
+    historyDom.innerHTML = "";
     //affiche une premiere trick
     GenerateTrick(trickList);
 }
@@ -51,6 +60,10 @@ function gameInit() {
         bestScore = score;
         bestScoreDom.innerHTML = bestScore;
     }
+    //affiche score actuel
+    tricksDom.innerHTML = 'Game over, score :' + score + '<br /> Choose Your Difficulty';
+    //arrete la partie + init variables
+    hasStarted = false;
     score = 0;
     fail = 0;
     scoreDom.innerHTML = score;
@@ -93,42 +106,50 @@ function winOnClick() {
         //incremente et update score
         score += addPoint;
         scoreDom.innerHTML = score;
+        //update de l'historique
+        historyDom.innerHTML += '<li>' + tricksDom.textContent.trim() + ' <span class="green">+' + addPoint + '</span></li>';
         //genere une nouvelle trick
         GenerateTrick(trickList);
     }
 }
 //Si trick raté
 function loseOnclick() {
+    let letterHistory;//stock la lettre pour l'historique
+    let trickHistory = tricksDom.textContent.trim();//stock la tricks pour l'historique
     if (hasStarted) {
         //update le tableau et l'affichage de skate[] en fonction du nombre de fail
         fail++;
         switch (fail) {
             case 1:
-                skateLettersArr[1] = 'S';
+                //letterHistory && skateLettersArr[1] = 'S';
+                letterHistory = skateLettersArr[1] = 'S';
+                GenerateTrick(trickList);
                 break;
             case 2:
-                skateLettersArr[2] = 'K';
+                letterHistory = skateLettersArr[2] = 'K';
+                GenerateTrick(trickList);
                 break;
             case 3:
-                skateLettersArr[3] = 'A';
+                letterHistory = skateLettersArr[3] = 'A';
+                GenerateTrick(trickList);
                 break;
             case 4:
-                skateLettersArr[4] = 'T';
+                letterHistory = skateLettersArr[4] = 'T';
+                GenerateTrick(trickList);
                 break;
             case 5://game over
-                skateLettersArr[5] = 'E';
-                tricksDom.innerHTML = 'Game over, score :' + score + '<br /> Choose Your Difficulty';
-                hasStarted = false;
+                letterHistory = skateLettersArr[5] = 'E';
                 gameInit();
                 break;
         }
+        //update l'historique
+        historyDom.innerHTML += '<li>' + trickHistory + ' <span class="red"> ' + letterHistory + '</span></li>';
         skateDom.innerHTML = "";
         for (letter of skateLettersArr) {
             skateDom.innerHTML += letter;
         }
     }
 }
-
 /*
     *_*_*_*_*_*_*_*_*_*_*EVENTS*_*_*_*_*_*_*_*_*_*_*
 */
@@ -141,6 +162,12 @@ document.addEventListener("DOMContentLoaded", function () {
     //boutton trick reussi
     winBtn.addEventListener("click", winOnClick);
     loseBtn.addEventListener("click", loseOnclick);
+    //restart
+    restartBtn.addEventListener("click", gameInit);
+    //affiche l'historique des tricks
+    historyBtn.addEventListener("click", function () {
+        historyDom.classList.toggle('display-none')
+    });
 
 });
 
