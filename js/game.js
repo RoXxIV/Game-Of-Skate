@@ -15,6 +15,7 @@ let appDom = document.querySelector("#app");
 
 //Choix difficulté Dom
 let listLvl = document.querySelectorAll("#lvl-choice li");
+let difficulty;
 
 //Gestion du score
 let score = 0;//actual score
@@ -37,6 +38,11 @@ let restartBtn = document.querySelector('#restart');
 //history
 let historyBtn = document.querySelector('#historyBtn');
 let historyDom = document.querySelector('#history-list');
+
+//Switch
+let switchBtn = document.querySelector('#switch');
+let hasSwitch = false;
+const regex = new RegExp('Switch');
 /*
     *_*_*_*_*_*_*_*_*_*_*FONCTIONS*_*_*_*_*_*_*_*_*_*_*
 */
@@ -64,6 +70,7 @@ function gameInit() {
     tricksDom.innerHTML = 'Game over, score :' + score + '<br /> Choose Your Difficulty';
     //arrete la partie + init variables
     hasStarted = false;
+    hasSwitch = false;
     score = 0;
     fail = 0;
     scoreDom.innerHTML = score;
@@ -73,19 +80,19 @@ function gameInit() {
 function onClickChooseLvl() {
     if (!hasStarted) {
         //recupere le niveau choisis
-        let difficulty = this.textContent.trim();
+        difficulty = this.textContent.trim();
         //configure trickList et addPoint en fonction du niveau choisi
         switch (difficulty) {
             case 'Novice':
-                trickList = noobTricks;
+                trickList = allTricks.novice;
                 addPoint = 1;
                 break;
             case 'Intermediate':
-                trickList = noobTricks.concat(interTricks);
+                trickList = allTricks.novice.concat(allTricks.intermediate);
                 addPoint = 2;
                 break;
             case 'Expert':
-                trickList = noobTricks.concat(interTricks, proTricks);
+                trickList = allTricks.novice.concat(allTricks.intermediate, allTricks.expert);
                 addPoint = 3;
                 break;
         }
@@ -150,6 +157,44 @@ function loseOnclick() {
         }
     }
 }
+function switchOnClick() {
+    //si la partie a commencé
+    if (hasStarted) {
+        /*
+        si le switch n'est pas activé, on l'active puis on ajoute les tricks en switch
+        en fonction du niveau. les points sont doublé
+        */
+        if (!hasSwitch) {
+            hasSwitch = true;
+            switch (difficulty) {
+                case 'Novice':
+                    trickList = trickList.concat(switchTricks.novice)
+                    addPoint *= 2;
+                    break;
+                case 'Intermediate':
+                    trickList = trickList.concat(switchTricks.novice, switchTricks.intermediate)
+                    addPoint *= 2;
+                    break;
+                case 'Expert':
+                    trickList = trickList.concat(switchTricks.novice, switchTricks.intermediate, switchTricks.expert)
+                    addPoint *= 2;
+                    break;
+            }
+
+        }
+        /*
+        si le switch est activé, on le desactive puis on supprime les tricks en switch.
+       les points sont divisé par 2
+        */
+        else if (hasSwitch) {
+            hasSwitch = false
+            // copie du tableau de trick qui filtre et supprime les trick contenant le mot "switch"
+            trickList = trickList.filter(trick => !regex.test(trick));
+            addPoint /= 2;
+        }
+    }
+
+}
 /*
     *_*_*_*_*_*_*_*_*_*_*EVENTS*_*_*_*_*_*_*_*_*_*_*
 */
@@ -168,6 +213,8 @@ document.addEventListener("DOMContentLoaded", function () {
     historyBtn.addEventListener("click", function () {
         historyDom.classList.toggle('display-none')
     });
+    //switch
+    switchBtn.addEventListener("click", switchOnClick);
 
 });
 
