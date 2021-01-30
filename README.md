@@ -35,4 +35,7 @@ Solo game of skate
     [ ]responsive
     [ ]opti grid
 
-    ![skate-30-01-2021](https://user-images.githubusercontent.com/20929844/106342173-2cbff880-62a0-11eb-989c-83ae4687d7bc.JPG)
+    
+![skate-30-01-2021](https://user-images.githubusercontent.com/20929844/106342368-d606ee80-62a0-11eb-9a42-2aba62495464.JPG)
+
+
