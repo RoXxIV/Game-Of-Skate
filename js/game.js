@@ -17,6 +17,9 @@ let appDom = document.querySelector("#app");
 let listLvl = document.querySelectorAll("#lvl-choice li");
 let difficulty;
 
+//info supp
+let infoMsgDom = document.querySelector("#info-msg");
+
 //Gestion du score
 let score = 0;//actual score
 let bestScore = 0;//Personnal best
@@ -56,6 +59,7 @@ function startGame() {
     }
     //vide l'historique
     historyDom.innerHTML = "";
+    infoMsgDom.innerHTML = "";
     //affiche une premiere trick
     GenerateTrick(trickList);
 }
@@ -67,13 +71,14 @@ function gameInit() {
         bestScoreDom.innerHTML = bestScore;
     }
     //affiche score actuel
-    tricksDom.innerHTML = 'Game over, score :' + score + '<br /> Choose Your Difficulty';
+    tricksDom.innerHTML = 'Game over, score :' + score;
     //arrete la partie + init variables
     hasStarted = false;
     hasSwitch = false;
     score = 0;
     fail = 0;
     scoreDom.innerHTML = score;
+    infoMsgDom.innerHTML = 'Choose a Difficulty to start the game';
 }
 
 //choix de la difficulté,configure trickList , puis commence le jeu
@@ -180,7 +185,7 @@ function switchOnClick() {
                     addPoint *= 2;
                     break;
             }
-
+            infoMsgDom.innerHTML = 'Double points';
         }
         /*
         si le switch est activé, on le desactive puis on supprime les tricks en switch.
@@ -191,6 +196,7 @@ function switchOnClick() {
             // copie du tableau de trick qui filtre et supprime les trick contenant le mot "switch"
             trickList = trickList.filter(trick => !regex.test(trick));
             addPoint /= 2;
+            infoMsgDom.innerHTML = "";
         }
     }
 
