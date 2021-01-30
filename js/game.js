@@ -2,7 +2,7 @@
     *_*_*_*_*_*_*_*_*_*_*VARIABLES*_*_*_*_*_*_*_*_*_*_*
 */
 //gameStatus
-let hasStarted = false
+let hasStarted = false;
 //Affichera les lettres skate + DOM
 let skateLettersArr = ['[', '_', '_', '_', '_', '_', ']'];
 let skateDom = document.querySelector('#skate');
@@ -168,15 +168,15 @@ function switchOnClick() {
             hasSwitch = true;
             switch (difficulty) {
                 case 'Novice':
-                    trickList = trickList.concat(switchTricks.novice)
+                    trickList = trickList.concat(switchTricks.novice);
                     addPoint *= 2;
                     break;
                 case 'Intermediate':
-                    trickList = trickList.concat(switchTricks.novice, switchTricks.intermediate)
+                    trickList = trickList.concat(switchTricks.novice, switchTricks.intermediate);
                     addPoint *= 2;
                     break;
                 case 'Expert':
-                    trickList = trickList.concat(switchTricks.novice, switchTricks.intermediate, switchTricks.expert)
+                    trickList = trickList.concat(switchTricks.novice, switchTricks.intermediate, switchTricks.expert);
                     addPoint *= 2;
                     break;
             }
@@ -187,7 +187,7 @@ function switchOnClick() {
        les points sont divisé par 2
         */
         else if (hasSwitch) {
-            hasSwitch = false
+            hasSwitch = false;
             // copie du tableau de trick qui filtre et supprime les trick contenant le mot "switch"
             trickList = trickList.filter(trick => !regex.test(trick));
             addPoint /= 2;
