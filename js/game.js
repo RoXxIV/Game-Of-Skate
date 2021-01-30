@@ -16,6 +16,21 @@ let appDom = document.querySelector("#app");
 //Choix difficulté Dom
 let listLvl = document.querySelectorAll("#lvl-choice li");
 let difficulty;
+//configuration du niveau choisis
+const difficultyUpdate = {
+    novice: {
+        availableTricks: allTricks.novice,
+        points: 1
+    },
+    intermediate: {
+        availableTricks: allTricks.novice.concat(allTricks.intermediate),
+        points: 2
+    },
+    expert: {
+        availableTricks: allTricks.novice.concat(allTricks.intermediate, allTricks.expert),
+        points: 3
+    }
+}
 
 //info supp
 let infoMsgDom = document.querySelector("#info-msg");
@@ -85,22 +100,11 @@ function gameInit() {
 function onClickChooseLvl() {
     if (!hasStarted) {
         //recupere le niveau choisis
-        difficulty = this.textContent.trim();
+        difficulty = this.textContent.trim().toLowerCase();
         //configure trickList et addPoint en fonction du niveau choisi
-        switch (difficulty) {
-            case 'Novice':
-                trickList = allTricks.novice;
-                addPoint = 1;
-                break;
-            case 'Intermediate':
-                trickList = allTricks.novice.concat(allTricks.intermediate);
-                addPoint = 2;
-                break;
-            case 'Expert':
-                trickList = allTricks.novice.concat(allTricks.intermediate, allTricks.expert);
-                addPoint = 3;
-                break;
-        }
+        trickList = difficultyUpdate[difficulty].availableTricks;
+        addPoint = difficultyUpdate[difficulty].points;
+
         //initialise le jeu
         startGame();
     }
@@ -135,24 +139,23 @@ function loseOnclick() {
             case 1:
                 //letterHistory && skateLettersArr[1] = 'S';
                 letterHistory = skateLettersArr[1] = 'S';
-                GenerateTrick(trickList);
                 break;
             case 2:
                 letterHistory = skateLettersArr[2] = 'K';
-                GenerateTrick(trickList);
                 break;
             case 3:
                 letterHistory = skateLettersArr[3] = 'A';
-                GenerateTrick(trickList);
                 break;
             case 4:
                 letterHistory = skateLettersArr[4] = 'T';
-                GenerateTrick(trickList);
                 break;
             case 5://game over
                 letterHistory = skateLettersArr[5] = 'E';
                 gameInit();
                 break;
+        }
+        if (fail > 0 && fail < 5) {
+            GenerateTrick(trickList);
         }
         //update l'historique
         historyDom.innerHTML += '<li>' + trickHistory + ' <span class="red"> ' + letterHistory + '</span></li>';
@@ -172,19 +175,17 @@ function switchOnClick() {
         if (!hasSwitch) {
             hasSwitch = true;
             switch (difficulty) {
-                case 'Novice':
+                case 'novice':
                     trickList = trickList.concat(switchTricks.novice);
-                    addPoint *= 2;
                     break;
-                case 'Intermediate':
+                case 'intermediate':
                     trickList = trickList.concat(switchTricks.novice, switchTricks.intermediate);
-                    addPoint *= 2;
                     break;
-                case 'Expert':
+                case 'expert':
                     trickList = trickList.concat(switchTricks.novice, switchTricks.intermediate, switchTricks.expert);
-                    addPoint *= 2;
                     break;
             }
+            addPoint *= 2;
             infoMsgDom.innerHTML = 'Double points';
         }
         /*
