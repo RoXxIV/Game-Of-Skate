@@ -35,7 +35,7 @@ header {
   margin-bottom: 20px;
   padding: 5px;
   text-align: center;
-  font-size: 24px;
+  font-size: 18px;
   color: white;
   background-image: url(../img/fond.jpg);
   background-color: #343a40;
@@ -55,6 +55,14 @@ main {
 #gameMode {
   grid-column-start: 4;
   grid-column-end: 10;
+  grid-row-end: 2;
+}
+#info {
+  grid-column-start: 5;
+  grid-column-end: 9;
+  grid-row-start: 2;
+  text-align: center;
+  margin-top: 20px;
 }
 #gameMode ul {
   display: flex;
@@ -128,33 +136,23 @@ main {
 /*
 *_*_*_*_*_*_*Media Queries*_*_*_*_*_*_*
 */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 320px) and (max-width: 1024px) {
   #gameMode {
+    grid-column-start: 2;
+    grid-column-end: 12;
+  }
+  #gameMode span {
+    width: 120px;
+  }
+  #info {
     grid-column-start: 2;
     grid-column-end: 12;
   }
   #app {
     grid-column-start: 2;
     grid-column-end: 12;
-  }
-  #history-bloc {
-    grid-column-start: 2;
-    grid-column-end: 12;
-    grid-row-start: 8;
-    grid-row-end: 10;
-    text-align: center;
-    overflow-y: scroll;
-    margin-top: 15px;
-  }
-}
-@media (min-width: 320px) and (max-width: 768px) {
-  #gameMode {
-    grid-column-start: 2;
-    grid-column-end: 12;
-  }
-  #app {
-    grid-column-start: 2;
-    grid-column-end: 12;
+    grid-row-start: 3;
+    grid-row-end: 8;
   }
   #history-bloc {
     grid-column-start: 2;
