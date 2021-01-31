@@ -1,7 +1,7 @@
 /*
     All TRicks
 */
-const allTricks = {
+let gameTricks = {
     novice:
         [
             'fakie Bigspin', 'Heelflip', 'Kickflip', 'Halfcab',
@@ -42,7 +42,6 @@ const switchTricks = {
             'Switch Inward Heelflip', 'Switch Laser Flip', 'Switch Pressure Flip'
         ]
 };
-
 
 //choisis un nb random entre min et max
 function getRandomInteger(min, max) { // min and max included 
