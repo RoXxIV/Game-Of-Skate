@@ -34,7 +34,7 @@ Solo game of skate
     [ ]Rendu final
     [x]responsive
     [x]opti grid
-    [ ]affichage des regle de jeu
+    [ ]affichage des regles du jeu
     [x]gestion message indication/erreurs
 
 ![skate-30-01-2021](https://user-images.githubusercontent.com/20929844/106342368-d606ee80-62a0-11eb-9a42-2aba62495464.JPG)
