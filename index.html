@@ -3,31 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/fc338e43d0.js"></script>
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/style.css" />
     <title>Game of Skate</title>
   </head>
   <body>
     <header>
-      <h1>Game Of Skate</h1>
+      <h1><span>G</span>ame <span>O</span>f <span>S</span>kate</h1>
     </header>
     <main>
       <section id="gameMode">
         <ul id="lvl-choice">
           <li>
-            <span class="btn-dark">Novice</span>
+            <span class="btn-dark">Novice <i class="fas fa-baby"></i></span>
           </li>
           <li>
-            <span class="btn-dark">Intermediate</span>
+            <span class="btn-dark"
+              >Intermediate <i class="fas fa-cat"></i
+            ></span>
           </li>
           <li>
-            <span class="btn-dark">Expert</span>
+            <span class="btn-dark">Expert <i class="fas fa-skull"></i></span>
           </li>
         </ul>
         <ul id="gameStatus">
-          <li><span id="switch" class="btn-dark">Switch</span></li>
-          <li><span id="restart" class="btn-dark">Restart</span></li>
-          <li><span id="historyBtn" class="btn-dark">History</span></li>
+          <li>
+            <span id="switch" class="btn-dark"
+              >Switch <i class="fas fa-bomb"></i
+            ></span>
+          </li>
+          <li>
+            <span id="restart" class="btn-dark"
+              >Restart <i class="fas fa-undo-alt"></i
+            ></span>
+          </li>
+          <li>
+            <span id="historyBtn" class="btn-dark"
+              >History <i class="fas fa-history"></i
+            ></span>
+          </li>
         </ul>
       </section>
       <section id="info">
@@ -41,8 +56,16 @@
         <div>
           <h4 id="trick">warm up !</h4>
           <ul id="winLose">
-            <li><span id="win" class="btn-dark">Win</span></li>
-            <li><span id="lose" class="btn-dark">Lose</span></li>
+            <li>
+              <span id="win" class="btn-dark"
+                >Win <i class="fas fa-check"></i
+              ></span>
+            </li>
+            <li>
+              <span id="lose" class="btn-dark"
+                >Lose <i class="fas fa-times"></i
+              ></span>
+            </li>
           </ul>
           <h3 id="skate"></h3>
         </div>

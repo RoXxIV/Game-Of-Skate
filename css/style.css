@@ -7,11 +7,12 @@
 */
 body {
   font-family: "Architects Daughter", cursive;
+  background-color: #ff7900;
 }
 .btn-dark {
   color: #fff;
   background-color: #343a40;
-  border-color: #343a40;
+  border: 2px solid white;
 }
 
 .btn-dark:hover {
@@ -28,6 +29,10 @@ body {
 .display-none {
   display: none;
 }
+header h1 span {
+  color: #343a40;
+  font-size: 1.2em;
+}
 /*
 *_*_*_*_*_*_*HEADER*_*_*_*_*_*_*
 */
@@ -37,9 +42,12 @@ header {
   text-align: center;
   font-size: 18px;
   color: white;
-  background-image: url(../img/fond.jpg);
-  background-color: #343a40;
-  background-blend-mode: hue;
+
+  /*border-bottom: 2px solid white;
+    background-image: url(../img/fond.jpg);
+  background-color: #ff7900;
+  background-blend-mode: multiply;
+  */
 }
 /*
 *_*_*_*_*_*_*MAIN*_*_*_*_*_*_*
@@ -79,6 +87,7 @@ main {
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
+  border-radius: 10px;
 }
 /*
 *_*_*_*_*_*_*APP*_*_*_*_*_*_*
@@ -88,9 +97,10 @@ main {
   grid-column-end: 10;
   grid-row-start: 3;
   grid-row-end: 8;
-  border: 2px solid #343a40;
+  border: 2px solid white;
   padding: 10px 20px;
-  color: #343a40;
+  color: white;
+  border-radius: 10px;
 }
 #scoring {
   display: flex;
@@ -98,6 +108,12 @@ main {
 }
 #scoring li {
   font-size: 18px;
+}
+#score {
+  font-size: 1.3em;
+}
+#bestScore {
+  font-size: 1.3em;
 }
 #winLose {
   display: flex;
@@ -132,6 +148,8 @@ main {
 }
 #history-list {
   overflow-y: scroll;
+  color: white;
+  height: 50vh;
 }
 /*
 *_*_*_*_*_*_*Media Queries*_*_*_*_*_*_*
