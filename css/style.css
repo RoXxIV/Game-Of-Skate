@@ -203,6 +203,6 @@ main {
     width: 90px;
   }
   #winLose {
-    justify-content: space-between;
+    justify-content: space-around;
   }
 }
