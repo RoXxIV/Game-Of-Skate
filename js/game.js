@@ -87,7 +87,7 @@ function startGame() {
   }
   //vide l'historique + infoMsg
   historyDom.innerHTML = "";
-  infoMsgDom.innerHTML = "";
+  infoMsgDom.innerHTML = "🍍";
   //affiche une premiere trick
   GenerateTrick(trickList);
 }
