@@ -200,6 +200,9 @@ main {
   }
   #win,
   #lose {
-    width: 100px;
+    width: 90px;
+  }
+  #winLose {
+    justify-content: space-between;
   }
 }
