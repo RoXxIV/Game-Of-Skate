@@ -95,7 +95,7 @@ main {
 #app {
   grid-column-start: 4;
   grid-column-end: 10;
-  grid-row-start: 3;
+  grid-row-start: 4;
   grid-row-end: 8;
   border: 2px solid white;
   padding: 10px 20px;
@@ -158,25 +158,37 @@ main {
   #gameMode {
     grid-column-start: 2;
     grid-column-end: 12;
+    display: flex;
+    justify-content: space-between;
   }
   #gameMode span {
-    width: 120px;
+    width: 150px;
+    font-size: 0.9em;
+    margin: 5px 0px;
+  }
+  #lvl-choice {
+    flex-direction: column;
+  }
+  #gameStatus {
+    flex-direction: column;
   }
   #info {
     grid-column-start: 2;
     grid-column-end: 12;
+    grid-row-start: 3;
+    margin-top: -30px;
   }
   #app {
     grid-column-start: 2;
     grid-column-end: 12;
-    grid-row-start: 3;
-    grid-row-end: 8;
+    grid-row-start: 4;
+    grid-row-end: 9;
   }
   #history-bloc {
     grid-column-start: 2;
     grid-column-end: 12;
-    grid-row-start: 8;
-    grid-row-end: 10;
+    grid-row-start: 9;
+    grid-row-end: 11;
     text-align: center;
     overflow-y: scroll;
     margin-top: 15px;
