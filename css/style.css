@@ -63,14 +63,17 @@ main {
 #gameMode {
   grid-column-start: 4;
   grid-column-end: 10;
-  grid-row-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  margin: auto 0px;
 }
 #info {
   grid-column-start: 5;
   grid-column-end: 9;
-  grid-row-start: 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
   text-align: center;
-  margin-top: 30px;
+  margin: auto 0px;
 }
 #gameMode ul {
   display: flex;
@@ -101,6 +104,7 @@ main {
   padding: 10px 20px;
   color: white;
   border-radius: 10px;
+  margin-top: 20px;
 }
 #scoring {
   display: flex;
@@ -176,7 +180,8 @@ main {
     grid-column-start: 2;
     grid-column-end: 12;
     grid-row-start: 3;
-    margin-top: -30px;
+    grid-row-end: 4;
+    font-size: 0.7em;
   }
   #app {
     grid-column-start: 2;
