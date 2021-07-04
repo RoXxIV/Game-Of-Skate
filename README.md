@@ -2,7 +2,7 @@
 
 Solo game of skate
 
-- practice JS
+- practice vanilla JS, grid
 
 ## 1.Difficulté
 
